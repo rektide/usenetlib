@@ -31,6 +31,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.ProtocolVersion;
@@ -47,6 +49,8 @@ import com.janoz.usenet.SearchException;
 import com.janoz.usenet.model.NZB;
 
 public class NewzbinConnectorTest {
+
+	private static final Log LOG = LogFactory.getLog(NewzbinConnectorTest.class);
 
 	private static final byte[] SOME_BYTES = "someRandomBytes".getBytes();
 	private static String SEARCH_SUCCESS = "searchSuccess.bin"; 
@@ -472,6 +476,8 @@ public class NewzbinConnectorTest {
 			ClientProtocolException {
 		
 		URL resource = this.getClass().getClassLoader().getResource("newzbin/"+filename);
+		String location = resource.toString();
+		LOG.error(location);
 		return recordHttpExecute(response, new FileInputStream(resource.toString().substring(6)));
 	}
 	
