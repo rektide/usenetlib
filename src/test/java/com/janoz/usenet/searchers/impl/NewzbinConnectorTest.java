@@ -476,9 +476,7 @@ public class NewzbinConnectorTest {
 			ClientProtocolException {
 		
 		URL resource = this.getClass().getClassLoader().getResource("newzbin/"+filename);
-		String location = resource.toString();
-		LOG.error(location);
-		return recordHttpExecute(response, new FileInputStream(resource.toString().substring(6)));
+		return recordHttpExecute(response, new FileInputStream(resource.toString().substring(5)));
 	}
 	
 	private Capture<HttpPost> recordHttpExecute(HttpResponse response,byte[] retunedData) throws IOException,
